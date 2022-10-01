@@ -13,3 +13,4 @@ git restore --staged crash-consensus/experiments/liquibook/liquibook_additions.t
 patch -p 1 < ../patches/thread_sleep.patch
 patch -p 1 < ../patches/default_cores.patch
 patch -p 1 < ../patches/fix_leader.patch
+patch -p 1 < ../patches/add_constness.patch

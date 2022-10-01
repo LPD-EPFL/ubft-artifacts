@@ -27,8 +27,6 @@ done
 
 ./build.py -c gcc crash-consensus
 
-crash-consensus/demo/using_conan_fully/build.sh gcc-release
-
 cd crash-consensus/libgen
 mkdir -p prebuilt-lib/lib
 ./export.sh gcc-debug && cp -r exported/include prebuilt-lib && mkdir prebuilt-lib/lib/debug && cp exported/libcrashconsensus.so prebuilt-lib/lib/debug
