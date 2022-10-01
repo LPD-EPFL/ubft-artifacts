@@ -48,3 +48,6 @@ mv build/minbft ../binaries/minbft_noecdsa
 cd "$SCRIPT_DIR"
 zip -r ../payload.zip ../binaries/
 zip -urj ../payload.zip deploy/*
+zip -urj ../payload.zip ../../ubft-build/scripts/deploy/invoker.sh
+zip -urj ../payload.zip ../../ubft-build/scripts/deploy/run-invoker.sh
+zip -urj ../payload.zip ../../ubft-build/scripts/deploy/invoker-stop.sh
