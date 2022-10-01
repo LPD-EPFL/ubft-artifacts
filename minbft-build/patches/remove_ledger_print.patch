@@ -1,0 +1,20 @@
+diff --git a/sample/requestconsumer/simpleledger.go b/sample/requestconsumer/simpleledger.go
+index 203907f..81e30ea 100644
+--- a/sample/requestconsumer/simpleledger.go
++++ b/sample/requestconsumer/simpleledger.go
+@@ -25,7 +25,6 @@ import (
+ 	"encoding/json"
+ 	"fmt"
+ 	"io/ioutil"
+-	"log"
+ 	"sync"
+ )
+ 
+@@ -120,7 +119,6 @@ func NewSimpleLedger() *SimpleLedger {
+ 			// simpleledger: one transaction makes one block
+ 			block := l.appendBlock(msg.requestPayload)
+ 
+-			log.Printf("Received block[%d]: %v", block.Height, string(msg.requestPayload))
+ 			// trivial implementation of the transaction execution and return the result
+ 			blockJSON, err := json.Marshal(block)
+ 			if err != nil {

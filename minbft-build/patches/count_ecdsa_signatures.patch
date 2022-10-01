@@ -1,0 +1,20 @@
+diff --git a/sample/authentication/crypto.go b/sample/authentication/crypto.go
+index 0e7c004..89d4ed7 100644
+--- a/sample/authentication/crypto.go
++++ b/sample/authentication/crypto.go
+@@ -58,6 +58,7 @@ type ecdsaSignature struct {
+ 
+ // Sign returns an ECDSA signature that is encoded as ASN.1 der format
+ func (c *EcdsaSigCipher) Sign(md []byte, privKey interface{}) ([]byte, error) {
++	fmt.Println("ECDSA_Sign")
+ 	return make([]byte, 72), nil
+ 	/*
+ 	if eccPrivKey, ok := privKey.(*ecdsa.PrivateKey); ok {
+@@ -77,6 +78,7 @@ func (c *EcdsaSigCipher) Sign(md []byte, privKey interface{}) ([]byte, error) {
+ 
+ // Verify verifies a ECDSA signature that is encoded as ASN.1 der format
+ func (c *EcdsaSigCipher) Verify(md, sig []byte, pubKey interface{}) bool {
++	fmt.Println("ECDSA_Verify")
+ 	return true
+ 	/*
+ 	ecdsaSig := &ecdsaSignature{}

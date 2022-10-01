@@ -1,0 +1,26 @@
+diff --git a/sample/peer/cmd/request.go b/sample/peer/cmd/request.go
+index 2f5e9b6..1724100 100644
+--- a/sample/peer/cmd/request.go
++++ b/sample/peer/cmd/request.go
+@@ -77,8 +77,8 @@ func request(client client.Client, arg string) {
+ 	}
+ 
+ 	select {
+-	case res := <-client.Request([]byte(arg)):
+-		fmt.Println("Reply:", string(res))
++	case <-client.Request([]byte(arg)):
++		;
+ 	case <-timeoutChan:
+ 		fmt.Println("Client Request timer expired.")
+ 		os.Exit(1)
+@@ -134,7 +134,10 @@ func requests(args []string) ([]byte, error) {
+ 	} else {
+ 		scanner := bufio.NewScanner(os.Stdin)
+ 		for scanner.Scan() {
++			start := time.Now()
+ 			request(client, scanner.Text())
++			elapsed := time.Since(start)
++			fmt.Printf("%s\n", elapsed)
+ 		}
+ 	}
+ 

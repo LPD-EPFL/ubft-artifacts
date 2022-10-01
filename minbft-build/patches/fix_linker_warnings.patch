@@ -1,0 +1,13 @@
+diff --git a/usig/sgx/Makefile b/usig/sgx/Makefile
+index 5a6c6bc..cc2ae96 100644
+--- a/usig/sgx/Makefile
++++ b/usig/sgx/Makefile
+@@ -188,7 +188,7 @@ ENCLAVE_LDFLAGS  := $(COMMON_LDFLAGS) -Wl,-pie -Wl,--no-undefined \
+                     -Bstatic -Bsymbolic -Wl,--export-dynamic \
+                     -Wl,--version-script=$(ENCLAVE_LDS) \
+                     -Wl,-eenclave_entry -Wl,--defsym,__ImageBase=0 \
+-                    -Wl,-fuse-ld=gold -Wl,--rosegment
++                    #-Wl,-fuse-ld=gold -Wl,--rosegment
+ ENCLAVE_LDLIBS   := $(COMMON_LDLIBS) -Wl,--whole-archive \
+                     -l$(SGX_TRTS_LIB) -Wl,--no-whole-archive \
+                     -Wl,--start-group -lsgx_tstdc -lsgx_tcrypto \

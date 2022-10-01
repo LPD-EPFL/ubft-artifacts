@@ -1,0 +1,36 @@
+# Sample consensus configuration file
+
+# Protocol options
+protocol:
+  # Number of replicas (servers)
+  "n": 3
+
+  # Fault tolerance (max number of faulty replicas)
+  "f": 1
+
+  # Checkpoint period
+  checkpointPeriod: 1000000
+
+  # Max log size (high minus low water mark)
+  logsize: 2000000
+
+  # Timeouts
+  timeout:
+    # Request processing timeout (triggers view change)
+    request: 2s
+
+    # Prepare processing timeout (forwards request if expired)
+    prepare: 1s
+
+    # Initial view change timeout (triggers another view change)
+    viewchange: 3s
+
+# List of peers (IDs and network addresses)
+# (strip the IPs to run all instances in the same machine)
+peers:
+    - id: 0
+      addr: "192.168.117.201:8000"
+    - id: 1
+      addr: "192.168.117.202:8001"
+    - id: 2
+      addr: "192.168.117.203:8002"

@@ -1,0 +1,56 @@
+diff --git a/usig/sgx/enclave/usig.c b/usig/sgx/enclave/usig.c
+index fec54ae..e83195a 100644
+--- a/usig/sgx/enclave/usig.c
++++ b/usig/sgx/enclave/usig.c
+@@ -39,7 +39,6 @@ sgx_status_t ecall_usig_create_ui(sgx_sha256_hash_t digest,
+ {
+         static uint64_t usig_counter = 1;
+         sgx_status_t ret;
+-        sgx_ecc_state_handle_t ecc_handle;
+         sgx_ec256_signature_t signature_buf;
+         usig_cert_data_t data;
+ 
+@@ -48,29 +47,17 @@ sgx_status_t ecall_usig_create_ui(sgx_sha256_hash_t digest,
+                 goto out;
+         }
+ 
+-        ret = sgx_ecc256_open_context(&ecc_handle);
+-        if (ret != SGX_SUCCESS) {
+-                goto out;
+-        }
+-
+         memcpy(data.digest, digest, sizeof(data.digest));
+         data.epoch = usig_epoch;
+         *counter = data.counter = usig_counter;
+ 
+-        ret = sgx_ecdsa_sign((uint8_t *)&data, sizeof(data),
+-                             &usig_priv_key, &signature_buf, ecc_handle);
+-        if (ret != SGX_SUCCESS) {
+-                goto close_context;
+-        }
+-
+         // Increment the internal counter just before going to expose
+         // a valid signature to the untrusted world. That makes sure
+         // the counter value cannot be reused to sign another message.
+         usig_counter++;
+         memcpy(signature, &signature_buf, sizeof(signature_buf));
++	ret = SGX_SUCCESS;
+ 
+-close_context:
+-        sgx_ecc256_close_context(ecc_handle);
+ out:
+         return ret;
+ }
+diff --git a/usig/sgx/sgx-usig.go b/usig/sgx/sgx-usig.go
+index 09f57d2..4a20704 100644
+--- a/usig/sgx/sgx-usig.go
++++ b/usig/sgx/sgx-usig.go
+@@ -64,7 +64,7 @@ func (u *USIG) CreateUI(message []byte) (*usig.UI, error) {
+ // VerifyUI is just a wrapper around the VerifyUI function at the
+ // package-level.
+ func (u *USIG) VerifyUI(message []byte, ui *usig.UI, usigID []byte) error {
+-	return VerifyUI(message, ui, usigID)
++	return nil
+ }
+ 
+ // ID returns the USIG instance identity.
