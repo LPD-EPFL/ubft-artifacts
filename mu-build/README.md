@@ -4,7 +4,7 @@ Mu requires setting its configuration file appropriately before building.
 The instructions below provide all necessary steps to build Mu.
 
 ## Preparation
-First, download Mu from its repository and disable its failure detection (not needed) running
+First, download Mu from its repository and disable its failure detection (not needed) by running
 ```sh
 scripts/prepare.sh
 ```
