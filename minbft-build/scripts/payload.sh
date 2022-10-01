@@ -2,6 +2,15 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+while true; do
+	read -p "Did you configure the $(realpath "$SCRIPT_DIR"/../config/consensus.yaml) file?[y/n] " yn
+    case $yn in
+        [Yy]* ) echo "Great! Continuing with experiment"; break;;
+        [Nn]* ) echo "Please, do it and come back!"; exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
 # For the version with with ECDSA
 cd "$SCRIPT_DIR"/../minbft_ecdsa
 
