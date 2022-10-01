@@ -12,3 +12,4 @@ git revert -n 1c846cd76b4d535e646bf581724d894d54b1591d &>/dev/null
 git restore --staged crash-consensus/experiments/liquibook/liquibook_additions.tar.gz &>/dev/null
 patch -p 1 < ../patches/thread_sleep.patch
 patch -p 1 < ../patches/default_cores.patch
+patch -p 1 < ../patches/fix_leader.patch
