@@ -11,6 +11,14 @@ while true; do
     esac
 done
 
+shopt -s extglob
+
+cd "$SCRIPT_DIR"
+rm -rf ../payload.zip
+rm -rf ../binaries/minbft_ecdsa
+rm -rf ../binaries/minbft_noecdsa
+
+
 # For the version with with ECDSA
 cd "$SCRIPT_DIR"/../minbft_ecdsa
 
@@ -38,6 +46,5 @@ cp /opt/sgxsdk/sdk_libs/libsgx_uae_service_sim.so build/minbft/lib
 mv build/minbft ../binaries/minbft_noecdsa
 
 cd "$SCRIPT_DIR"
-rm -rf ../payload.zip
 zip -r ../payload.zip ../binaries/
 zip -urj ../payload.zip deploy/*
