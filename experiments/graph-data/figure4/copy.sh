@@ -8,4 +8,4 @@ cd "$SCRIPT_DIR"
 
 cp ../../../ubft-build/payload.zip ../../apps/mu/
 cp ../../../ubft-build/payload.zip ../../apps/ubft/
-cp ../../../ubft-build/payload.zip ../../apps/replicated/
+cp ../../../ubft-build/payload.zip ../../apps/unreplicated/
