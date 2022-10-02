@@ -1,5 +1,5 @@
-# uKharon's experiments
-This directory explains how to automatically run uKharon's experiments
+# uBFT's experiments
+This directory explains how to automatically run uBFT's experiments
 
 ## Configuring the scripts
 The file `base-scripts/config.sh` needs to be configured before running the experiments. Several variables need to be set as explained below:
@@ -20,10 +20,6 @@ machine1
 machine2
 machine3
 machine4
-machine5
-machine6
-machine7
-machine8
 ```
 These variables define the symbolic names to access the deployment machines over ssh. To setup these symbolic names you need to edit `~/.ssh/config` in the machine you run the deployment scripts from (e.g., your laptop). You can learn how to do this [here](https://linuxize.com/post/using-the-ssh-config-file/).
 
@@ -32,14 +28,14 @@ If your key contains a passphrase, you can rely on `ssh-agent`, also explained i
 
 For example, the following entry in `~/.ssh/config`
 ```
-Host delta1
-  HostName lpdquatro1.epfl.ch
+Host mymachine
+  HostName superlongname.example.com
   User user
   Port 22
   IdentityFile ~/.ssh/id_rsa
   ServerAliveInterval 120
 ```
-Allows you to access the machine by merely typing `ssh delta1`. 
+Allows you to access the machine by merely typing `ssh mymachine`. 
 
 ---
 
@@ -48,10 +44,6 @@ machine1hostname
 machine2hostname
 machine3hostname
 machine4hostname
-machine5hostname
-machine6hostname
-machine7hostname
-machine8hostname
 ```
 These variables define the Fully Qualified Domain Names (FQDN) of these machines. Every machine should be able to access every other machine using the corresponding FQDN.
 You can learn how to setup the FQDNs [here](https://linuxconfig.org/how-to-change-fqdn-domain-name-on-ubuntu-20-04-focal-fossa-linux).
@@ -67,28 +59,13 @@ Make sure that `memcached` is installed in the declared machine and that its por
 ---
 
 ```sh
-UKHARON_MCGROUP
-UKHARON_KERNELMCGROUP
-```
-Set these variables with the information retrieved when building `ukharon-build`.
-
----
-
-```sh
-UKHARON_SYNCKILLERMCGROUP
-```
-Set this variable to another InfiniBand multicast group.
-It is used by the `sync_killer` to trigger `SIGKILL`s remotely and thus simulate coordinated failures.
-
----
-
-```sh
 UKHARON_HAVE_SUDO_ACCESS
 UKHARON_SUDO_ASKS_PASS
 UKHARON_SUDO_PASS
 ```
-Sudo access is necessary to achieve optimal performance. These variables refer to the deployment machines.
-If you have sudo access in the deployement machines, set the first variable to `true`. 
+These parameters define whether the processes launched during the experiments have sudo access.
+We do not require root priviledges for our experiments. Leave these variables as is.
+If you want to launch the processes with sudo, then (assuming you have sudo access in the deployement machines) set the first variable to `true`. 
 If when issuing a command with sudo you need to type your password, set the second variable to `true` and put the password in the third variable.
 
 ---
@@ -101,12 +78,6 @@ Set the variables, which refer to the deployment machines, to achieve optimal pe
 In a multi-socket machine, set `UKHARON_CPUNODEBIND` to the socket that is closer to the RDMA NIC and `UKHARON_CPUMEMBIND` to the memory that is closer to this socket.
 The instructions in `mu-build` explain how to retrieve this information.
 
----
-
-```sh
-UKHARON_MEMSTRESS_CORES
-```
-These are the cores (in the deployment machines) that are used by `stress-ng` for memory stressing. These cores must not interfer with the cores selected in `ukharon-build`.
 
 ## Running the experiments
 * To run the experiment of figure 3, go to the [`stress`](stress/) directory
