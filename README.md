@@ -8,6 +8,8 @@ More precisely, it contains:
 
 By running the experiments, you should be able to reproduce the numbers shown in:
 * **Figure 4**: End-to-end latency of different applications when either not replicated or replicated via Mu and uBFT’s fast path.
+* **Figure 5**: Median end-to-end latency for different request sizes of an unreplicated no-op application, as well as its latency when replicated with Mu, uBFT and MinBFT.
+
 
 # Detailed instructions
 
@@ -80,6 +82,7 @@ The building process is long. Follow the instructions in each one of the followi
 * Build Mu (on a deployment machine), as explained in [`mu-build`](mu-build/).
 * Build uBFT (on a deployment machine), as explained in [`ubft-build`](ubft-build/).
 * Build MinBFT (on a deployment machine), as explained in [`minbft-build`](minbft-build/).
+* Build the Enclave code for MinBFT (on a deployment machine), as explained in [`usig-build`](usig-build/).
 
 Once you have finished with the above steps, the binaries will be packaged in `payload.zip` files.
 
