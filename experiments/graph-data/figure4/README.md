@@ -1,4 +1,4 @@
-# Effect of lease duration, network and memory load on timely lease renewal
+# Figure 4
 End-to-end latency of different applications when either not replicated or replicated via Mu and uBFT’s fast path.
 
 ## Payload
