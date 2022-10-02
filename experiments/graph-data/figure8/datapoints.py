@@ -62,7 +62,9 @@ def main():
        print(f"Request size: {req_size} B")
        for t, p in percentiles.items():
            latency = p['latency']
-           print(f"\tt = {t}, latency(%iles in µs) = {latency}")
+           memory = p['mem']
+           print(f"\tt = {t}, memory consumption = {memory}")
+           print(f"\tlatency(%iles in µs) = {latency}")
        print()
 
 if __name__ == "__main__":
