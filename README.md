@@ -16,10 +16,10 @@ This section will guide you on how to build, configure, and run all experiments,
 ## Cluster prerequisites
 
 Running all experiments requires:
-* a cluster of 8 machines connected via an InfiniBand fabric,
+* a cluster of 4 machines connected via an InfiniBand fabric,
 * Ubuntu 20.04 (different systems may work, but they have not been tested),
 * all machines to have FQDNs (further instructions on this matter will be given when needed),
-* all machines having the following ports open: 7000-7100, 11211, 18515.
+* all machines having the following ports open: 7000-7100, 11211, 18515, 9998
 
 ### Dependencies
 
@@ -52,6 +52,22 @@ Install the appropriate OFED driver by running:
 wget http://www.mellanox.com/downloads/ofed/MLNX_OFED-5.3-1.0.0.1/MLNX_OFED_LINUX-5.3-1.0.0.1-ubuntu20.04-x86_64.tgz
 tar xf MLNX_OFED_LINUX-5.3-1.0.0.1-ubuntu20.04-x86_64.tgz
 sudo ./mlnxofedinstall
+```
+
+#### Intel SGX dependency
+```sh
+sudo echo 'deb [trusted=yes arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu focal main' > /etc/apt/sources.list.d/intel-sgx.list
+sudo apt-get -y install wget build-essential python pkg-config \
+                                        libsgx-epid libsgx-quote-ex libsgx-dcap-ql \
+                                        libsgx-enclave-common-dev libsgx-dcap-ql-dev libsgx-dcap-default-qpl-dev
+
+cd /opt
+sudo wget https://download.01.org/intel-sgx/sgx-dcap/1.12.1/linux/distro/ubuntu20.04-server/sgx_linux_x64_sdk_2.15.101.1.bin
+sudo chmod +x /opt/sgx_linux_x64_sdk_2.15.101.1.bin 
+sudo ./sgx_linux_x64_sdk_2.15.101.1.bin --prefix /opt
+echo 'source /opt/sgxsdk/environment' | sudo tee -a /etc/profile
+echo '/opt/sgxsdk/sdk_libs' | sudo tee /etc/ld.so.conf.d/sgx-sdk.conf
+sudo ldconfig
 ```
 
 ### Building the artifacts
