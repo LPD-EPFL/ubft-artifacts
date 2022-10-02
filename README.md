@@ -78,6 +78,7 @@ Assuming all the machines in your cluster have the same configuration, you need 
 
 The building process is long. Follow the instructions in each one of the following sub-directories:
 * Build Mu (on a deployment machine), as explained in [`mu-build`](mu-build/).
+* Build uBFT (on a deployment machine), as explained in [`ubft-build`](ubft-build/).
 * Build MinBFT (on a deployment machine), as explained in [`minbft-build`](minbft-build/).
 
 Once you have finished with the above steps, the binaries will be packaged in `payload.zip` files.
