@@ -8,10 +8,16 @@ def minbft_latency(size, crypto, vma):
     sgx_sig_latency = (4 * 9) if not crypto else 0
     crypto = 'no' if not crypto else ''
     def to_us(s): return float(s.split('µs')[0]) if 'µs' in s else float(s.split('ms')[0]) * 1000
-    print(f'../../minbft/logs/e2e-latency-minbft_{crypto}ecdsa-{vma_str}-{size}/m4/logs/minbft-client.txt')
     with open(f'../../minbft/logs/e2e-latency-minbft_{crypto}ecdsa-{vma_str}-{size}/m4/logs/minbft-client.txt') as f:
-        next(f) # we skip the first line
-        latencies = [to_us(l) for l in f]
+        next(f);next(f) # skip the first two lines
+        latencies = []
+        for l in f:
+            try:
+                latencies.append(to_us(l))
+            except:
+                pass
+        #latencies = [to_us(l) for l in f]
+
         latencies.sort()
         return latencies[len(latencies) // 2] + sgx_sig_latency
 
@@ -20,7 +26,6 @@ def flip_latency(smr, size, client=None, replicated=True, path=None):
     machine = 4 if replicated else 2
     path = {None: '', 'fast': 'fastpath-', 'slow': 'slowpath-'}[path]
     replicated = 'replicated' if replicated else 'unreplicated'
-    print(f'../../apps/{smr}/logs/e2e-latency-{path}flip-{replicated}-s{size}/m{machine}/logs/{client}-client.txt')
     with open(f'../../apps/{smr}/logs/e2e-latency-{path}flip-{replicated}-s{size}/m{machine}/logs/{client}-client.txt') as f:
         return next(int(l.split(' ')[-1]) for l in f if '50th-percentile (ns):' in l) / 1000.
 
