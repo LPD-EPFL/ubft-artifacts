@@ -9,7 +9,7 @@ WIN_NAME=$1
 PID=$2
 
 if [ -z $PID ] ; then
-  PID=$(tmux capture-pane -t ukharon:${WIN_NAME} -pS -10000 | grep -Po "PID\\d+PID" | sed -r 's/^([^.]+).*$/\1/; s/^[^0-9]*([0-9]+).*$/\1/')
+  PID=$(tmux capture-pane -t ubft:${WIN_NAME} -pS -10000 | grep -Po "PID\\d+PID" | sed -r 's/^([^.]+).*$/\1/; s/^[^0-9]*([0-9]+).*$/\1/')
   if [ -z $PID ] ; then
     echo "Could not fetch PID of the $WIN_NAME"
   else

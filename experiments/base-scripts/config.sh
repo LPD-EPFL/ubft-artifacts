@@ -16,12 +16,12 @@ machine4hostname=w4
 REGISTRY_MACHINE=machine1
 
 # Memcached does not run with root access
-UKHARON_HAVE_SUDO_ACCESS=false
-UKHARON_SUDO_ASKS_PASS=false
-UKHARON_SUDO_PASS="MyPass"
+UBFT_HAVE_SUDO_ACCESS=false
+UBFT_SUDO_ASKS_PASS=false
+UBFT_SUDO_PASS="MyPass"
 
-UKHARON_CPUNODEBIND=0
-UKHARON_CPUMEMBIND=0
+UBFT_CPUNODEBIND=0
+UBFT_CPUMEMBIND=0
 
 # Do not edit below this line
 machine1dir=m1

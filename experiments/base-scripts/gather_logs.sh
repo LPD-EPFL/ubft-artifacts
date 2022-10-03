@@ -16,4 +16,4 @@ MACHINEDIR="${!MDIR}"
 
 mkdir -p "$DESTDIR"/"$MACHINEDIR"
 
-scp -r $MACHINE:$ROOT_DIR/ukharon_experiment/$MACHINEDIR/logs "$DESTDIR"/"$MACHINEDIR"
+scp -r $MACHINE:$ROOT_DIR/ubft_experiment/$MACHINEDIR/logs "$DESTDIR"/"$MACHINEDIR"

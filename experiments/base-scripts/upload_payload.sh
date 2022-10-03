@@ -14,19 +14,19 @@ MDIR=${M}dir
 MACHINE="${!M}" 
 MACHINEDIR="${!MDIR}" 
 
-scp "$PAYLOAD" $MACHINE:$ROOT_DIR/ukharon_experiment/$MACHINEDIR
-scp -p "$SCRIPT_DIR"/memc.sh $MACHINE:$ROOT_DIR/ukharon_experiment/$MACHINEDIR
-scp -p "$SCRIPT_DIR"/config.sh $MACHINE:$ROOT_DIR/ukharon_experiment/$MACHINEDIR
-scp -p "$SCRIPT_DIR"/registry.sh $MACHINE:$ROOT_DIR/ukharon_experiment/$MACHINEDIR
-scp -p "$SCRIPT_DIR"/reparent.c $MACHINE:$ROOT_DIR/ukharon_experiment/$MACHINEDIR
+scp "$PAYLOAD" $MACHINE:$ROOT_DIR/ubft_experiment/$MACHINEDIR
+scp -p "$SCRIPT_DIR"/memc.sh $MACHINE:$ROOT_DIR/ubft_experiment/$MACHINEDIR
+scp -p "$SCRIPT_DIR"/config.sh $MACHINE:$ROOT_DIR/ubft_experiment/$MACHINEDIR
+scp -p "$SCRIPT_DIR"/registry.sh $MACHINE:$ROOT_DIR/ubft_experiment/$MACHINEDIR
+scp -p "$SCRIPT_DIR"/reparent.c $MACHINE:$ROOT_DIR/ubft_experiment/$MACHINEDIR
 
-if [ "$UKHARON_HAVE_SUDO_ACCESS" = true ] ; then
-    if [ "$UKHARON_SUDO_ASKS_PASS" = true ] ; then
+if [ "$UBFT_HAVE_SUDO_ACCESS" = true ] ; then
+    if [ "$UBFT_SUDO_ASKS_PASS" = true ] ; then
 cat << EOF > pass.py
 #!/usr/bin/env python3
-print("$UKHARON_SUDO_PASS")
+print("$UBFT_SUDO_PASS")
 EOF
 chmod +x pass.py
-scp -p "$SCRIPT_DIR"/pass.py $MACHINE:$ROOT_DIR/ukharon_experiment/$MACHINEDIR
+scp -p "$SCRIPT_DIR"/pass.py $MACHINE:$ROOT_DIR/ubft_experiment/$MACHINEDIR
     fi
 fi

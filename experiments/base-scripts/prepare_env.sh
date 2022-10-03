@@ -12,5 +12,5 @@ MACHINE="${!M}"
 MACHINEDIR="${!MDIR}" 
 
 ssh -o LogLevel=QUIET -t $MACHINE \
-    "rm -rf $ROOT_DIR/ukharon_experiment/$MACHINEDIR && \
-     mkdir -p $ROOT_DIR/ukharon_experiment/$MACHINEDIR/logs"
+    "rm -rf $ROOT_DIR/ubft_experiment/$MACHINEDIR && \
+     mkdir -p $ROOT_DIR/ubft_experiment/$MACHINEDIR/logs"

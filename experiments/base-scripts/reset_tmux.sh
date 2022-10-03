@@ -12,6 +12,6 @@ MACHINE="${!M}"
 MACHINEDIR="${!MDIR}" 
 
 ssh -o LogLevel=QUIET -t $MACHINE \
-    "tmux kill-session -t ukharon; \
-     tmux new-session -d -s ukharon && \
+    "tmux kill-session -t ubft; \
+     tmux new-session -d -s ubft && \
      tmux set-option -g remain-on-exit on"

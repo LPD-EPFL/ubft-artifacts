@@ -7,4 +7,4 @@ cd "$SCRIPT_DIR"
 
 WIN_NAME=$1
 
-tmux send-keys -t "ukharon:${WIN_NAME}" C-c
+tmux send-keys -t "ubft:${WIN_NAME}" C-c

@@ -11,5 +11,5 @@ MDIR=${M}dir
 MACHINE="${!M}" 
 MACHINEDIR="${!MDIR}" 
 
-ssh -o LogLevel=QUIET -t $MACHINE "cd $ROOT_DIR/ukharon_experiment/$MACHINEDIR && unzip -d deployment payload.zip"
-ssh -o LogLevel=QUIET -t $MACHINE "cd $ROOT_DIR/ukharon_experiment/$MACHINEDIR && gcc -shared -o libreparent.so -fPIC reparent.c"
+ssh -o LogLevel=QUIET -t $MACHINE "cd $ROOT_DIR/ubft_experiment/$MACHINEDIR && unzip -d deployment payload.zip"
+ssh -o LogLevel=QUIET -t $MACHINE "cd $ROOT_DIR/ubft_experiment/$MACHINEDIR && gcc -shared -o libreparent.so -fPIC reparent.c"

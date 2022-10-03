@@ -12,4 +12,4 @@ MACHINE="${!M}"
 MACHINEDIR="${!MDIR}" 
 
 ssh -o LogLevel=QUIET -t $MACHINE \
-    "tmux kill-session -t ukharon"
+    "tmux kill-session -t ubft"

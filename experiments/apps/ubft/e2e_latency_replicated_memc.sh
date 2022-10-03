@@ -18,14 +18,14 @@ succ_gets=80
 
 for msg_sz in ${MSG_SZ[@]}; do
     reset_processes
-    ssh -o LogLevel=QUIET -t $(machine2ssh $REGISTRY_MACHINE) "$ROOT_DIR/ukharon_experiment/$(machine2dir $REGISTRY_MACHINE)/memc.sh"
+    ssh -o LogLevel=QUIET -t $(machine2ssh $REGISTRY_MACHINE) "$ROOT_DIR/ubft_experiment/$(machine2dir $REGISTRY_MACHINE)/memc.sh"
 
-    ssh -o LogLevel=QUIET -t $(machine2ssh machine1) "$ROOT_DIR/ukharon_experiment/$(machine2dir machine1)/deployment/invoker.sh binaries/ubft-server ubft-server -l 1 -s 1 -s 2 -s 3 -a memc -c $key_sz,$value_sz,$get_percentage,$succ_gets -w 1 -b 1 $EXECUTION"
-    ssh -o LogLevel=QUIET -t $(machine2ssh machine2) "$ROOT_DIR/ukharon_experiment/$(machine2dir machine2)/deployment/invoker.sh binaries/ubft-server ubft-server -l 2 -s 1 -s 2 -s 3 -a memc -c $key_sz,$value_sz,$get_percentage,$succ_gets -w 1 -b 1 $EXECUTION"
-    ssh -o LogLevel=QUIET -t $(machine2ssh machine3) "$ROOT_DIR/ukharon_experiment/$(machine2dir machine3)/deployment/invoker.sh binaries/ubft-server ubft-server -l 3 -s 1 -s 2 -s 3 -a memc -c $key_sz,$value_sz,$get_percentage,$succ_gets -w 1 -b 1 $EXECUTION"
+    ssh -o LogLevel=QUIET -t $(machine2ssh machine1) "$ROOT_DIR/ubft_experiment/$(machine2dir machine1)/deployment/invoker.sh binaries/ubft-server ubft-server -l 1 -s 1 -s 2 -s 3 -a memc -c $key_sz,$value_sz,$get_percentage,$succ_gets -w 1 -b 1 $EXECUTION"
+    ssh -o LogLevel=QUIET -t $(machine2ssh machine2) "$ROOT_DIR/ubft_experiment/$(machine2dir machine2)/deployment/invoker.sh binaries/ubft-server ubft-server -l 2 -s 1 -s 2 -s 3 -a memc -c $key_sz,$value_sz,$get_percentage,$succ_gets -w 1 -b 1 $EXECUTION"
+    ssh -o LogLevel=QUIET -t $(machine2ssh machine3) "$ROOT_DIR/ubft_experiment/$(machine2dir machine3)/deployment/invoker.sh binaries/ubft-server ubft-server -l 3 -s 1 -s 2 -s 3 -a memc -c $key_sz,$value_sz,$get_percentage,$succ_gets -w 1 -b 1 $EXECUTION"
     sleep 10
 
-    ssh -o LogLevel=QUIET -t $(machine2ssh machine4) "$ROOT_DIR/ukharon_experiment/$(machine2dir machine4)/deployment/invoker.sh binaries/ubft-client ubft-client -l 64 -s 1 -s 2 -s 3 -a memc -c $key_sz,$value_sz,$get_percentage,$succ_gets -w 1 $EXECUTION"
+    ssh -o LogLevel=QUIET -t $(machine2ssh machine4) "$ROOT_DIR/ubft_experiment/$(machine2dir machine4)/deployment/invoker.sh binaries/ubft-client ubft-client -l 64 -s 1 -s 2 -s 3 -a memc -c $key_sz,$value_sz,$get_percentage,$succ_gets -w 1 $EXECUTION"
 
     if [[ -z $EXECUTION ]]
     then

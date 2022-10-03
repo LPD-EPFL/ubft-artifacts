@@ -12,5 +12,5 @@ MACHINE="${!M}"
 MACHINEDIR="${!MDIR}" 
 
 ssh -o LogLevel=QUIET -t $MACHINE \
-    "tmux new-session -d -s ukharon && \
+    "tmux new-session -d -s ubft && \
      tmux set-option -g remain-on-exit on"
