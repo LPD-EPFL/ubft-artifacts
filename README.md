@@ -83,8 +83,8 @@ sudo ldconfig
 ### Building the artifacts
 
 Assuming all the machines in your cluster have the same configuration, you need to:
-* build all the necessary binaries in one deployment machine,
-* package them and deploy them in all 8 machines.
+* build all the necessary binaries, for example in a deployment machine,
+* package them and deploy them in all 4 machines.
 
 The building process is long. Follow the instructions in each one of the following sub-directories:
 * Build Mu (on a deployment machine), as explained in [`mu-build`](mu-build/).
