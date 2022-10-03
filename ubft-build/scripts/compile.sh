@@ -9,5 +9,3 @@ cd "$SCRIPT_DIR"/../ubft
 ./build.py ubft
 ./build.py ubft-apps
 ubft-apps/binaries.sh
-
-./build.py distclean
