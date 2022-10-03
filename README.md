@@ -24,21 +24,27 @@ Running all experiments requires:
 * Ubuntu 20.04 (different systems may work, but they have not been tested),
 * all machines to have FQDNs (further instructions on this matter will be given when needed),
 * all machines having the following ports open: 7000-7100, 11211, 18515, 9998
-* A machine with Intel SGX (could be the one with Inifiniband).
+* a machine with Intel SGX (could be the one with Inifiniband).
 
-### Dependencies
-
-Prepare the machines on your cluster by installing the following dependencies:
+## Deployment
+The artifacts are built and packaged into binaries. Subsequently these binaries are deployed from a *gateway* machine (e.g., your laptop).
+The gateway machine requires the following depencencies installed to be able to execute the deployment scripts:
 ```sh
-apt install -y sudo coreutils gawk python3 zip tmux gcc numactl memcached redis
+apt install -y coreutils gawk python3 zip tmux
+```
+The cluster machines, assuming they are already setup for Infiniband+RDMA and Intel SGX, require the following dependencies to be able to execute the binaries:
+```sh
+apt install -y sudo coreutils gawk python3 zip tmux gcc numactl libmemcached-dev memcached redis
 ```
 
 ## Generating the artifacts
 
 ### Installing dependencies
+The first step in generating the artifacts is building and packaging the binaries. To do so, you need the dependencies below.
+You can build and package the binaries in a cluster machine, the gateway or another machine. It is important, however, that you build the binaries in a machine with the same distro/version as the cluster's machines, otherwise the binaries may not work. For example, you can use a docker container to build and package the binaries.
 
 #### Apt and PIP dependecies
-Install the required dependency on a vanilla Ubuntu 20.04 installation by running:
+Install the required dependencies on a vanilla Ubuntu 20.04 installation by running:
 ```sh
 sudo apt-get -y install \
     python3 python3-pip \
@@ -50,7 +56,6 @@ pip3 install --upgrade "conan>=1.47.0"
 ```
 
 #### Mellanox OFED dependency
-
 Install the appropriate OFED driver by running:
 
 ```sh
