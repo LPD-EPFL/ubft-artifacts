@@ -5,7 +5,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 while true; do
 	read -p "Did you configure the $(realpath "$SCRIPT_DIR"/../config/consensus.yaml) file?[y/n] " yn
     case $yn in
-        [Yy]* ) echo "Great! Continuing with experiment"; break;;
+        [Yy]* ) echo "Great! Continuing..."; break;;
         [Nn]* ) echo "Please, do it and come back!"; exit;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -15,8 +15,10 @@ shopt -s extglob
 
 cd "$SCRIPT_DIR"
 rm -rf ../payload.zip
-rm -rf ../binaries/minbft_ecdsa
-rm -rf ../binaries/minbft_noecdsa
+rm -rf ../binaries
+mkdir -p ../binaries/minbft_ecdsa
+mkdir -p ../binaries/minbft_noecdsa
+
 
 
 # For the version with with ECDSA
