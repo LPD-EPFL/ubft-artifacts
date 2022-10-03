@@ -3,7 +3,7 @@ This directory explains how to automatically run uBFT's experiments
 
 ## Configuring the scripts
 The file `base-scripts/config.sh` needs to be configured before running the experiments. Several variables need to be set as explained below:
-Note that the deployment scripts need not run from a deployment machine. You can instead run them e.g., from your laptop.
+> Note that the deployment scripts need not run from a deployment machine. You can instead run them e.g., from your laptop.
 
 ---
 
