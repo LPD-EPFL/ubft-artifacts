@@ -93,8 +93,12 @@ The building process is long. Follow the instructions in each one of the followi
 * Build the Enclave code for MinBFT (on a deployment machine), as explained in [`usig-build`](usig-build/).
 
 Once you have finished with the above steps, the binaries will be packaged in `payload.zip` files.
+Execute `./deployment.sh` to generate the `deployment.zip`.
 
 # Deploying and running the tests
+Transfer the `deployment.zip` to the gateway machine and extract its content.
+```sh
+unzip
 In order to configure the deployment and run the experiments, follow the instructions under [`experiments`](experiments/).
 
 __Gateway:__ To run the experiments we assume the existence of gateway machine that has access to the 4-cluster machines and the sgx machine. This machine may be one of the deployment machines or e.g., your laptop. The gateway orchestrates the execution and gathers the experimental results.
