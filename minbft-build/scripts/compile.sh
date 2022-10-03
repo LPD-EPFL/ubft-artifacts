@@ -8,7 +8,7 @@ export PATH=$PATH:"$SCRIPT_DIR/../go/bin"
 LD_LIBRARY_PATH_ORIG=$LD_LIBRARY_PATH
 
 # Cleanup
-find "$GOPATH" -type d -exec chmod 0755 {} \;
+find "$GOPATH" -type d -exec chmod 0755 {} \; &> /dev/null
 rm -rf "$GOPATH"
 
 # Compile with ECDSA
@@ -31,3 +31,5 @@ make install
 cd sample
 export LD_LIBRARY_PATH="$(pwd)/lib${LD_LIBRARY_PATH_ORIG:+:$LD_LIBRARY_PATH_ORIG}"
 bin/keytool generate -u lib/libusig.signed.so
+
+find "$GOPATH" -type d -exec chmod 0755 {} \; &> /dev/null
