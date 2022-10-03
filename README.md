@@ -52,7 +52,7 @@ sudo apt-get -y install \
     libmemcached-dev \
     libibverbs-dev # only if Mellanox OFED is not installed (see below).
 
-pip3 install --upgrade "conan>=1.47.0"
+pip3 install --upgrade "conan>=1.52.0"
 ```
 
 #### Mellanox OFED dependency
