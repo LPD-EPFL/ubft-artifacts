@@ -97,11 +97,10 @@ Once you have finished with the above steps, the binaries will be packaged in `p
 # Deploying and running the tests
 In order to configure the deployment and run the experiments, follow the instructions under [`experiments`](experiments/).
 
-__Note:__ For brevity, the parameter space explored by the scripts has been reduced drastically so that each experiment runs in a few minutes. Feel free to edit the scripts to explore more and reproduce all the results. We do not provide the scripts that generate the figures themselves.
+__Gateway:__ To run the experiments we assume the existence of gateway machine that has access to the 4-cluster machines and the sgx machine. This machine may be one of the deployment machines or e.g., your laptop. The gateway orchestrates the execution and gathers the experimental results.
 
-__Gateway:__ To run the experiments we assume the existence of gateway machine that has access to all 8 machines. This machine may be one of the deployment machines or e.g., your laptop. The gateway orchestrates the execution and gathers the experimental results.
+### Reproducing figures
 
-### Reproducing Figure 3
 
 From the gateway, run:
 ```sh
