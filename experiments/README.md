@@ -59,9 +59,9 @@ Make sure that `memcached` is installed in the declared machine and that its por
 ---
 
 ```sh
-UKHARON_HAVE_SUDO_ACCESS
-UKHARON_SUDO_ASKS_PASS
-UKHARON_SUDO_PASS
+UBFT_HAVE_SUDO_ACCESS
+UBFT_SUDO_ASKS_PASS
+UBFT_SUDO_PASS
 ```
 These parameters define whether the processes launched during the experiments have sudo access.
 We do not require root priviledges for our experiments. Leave these variables as is.
@@ -71,11 +71,11 @@ If when issuing a command with sudo you need to type your password, set the seco
 ---
 
 ```sh
-UKHARON_CPUNODEBIND
-UKHARON_CPUMEMBIND
+UBFT_CPUNODEBIND
+UBFT_CPUMEMBIND
 ```
 Set the variables, which refer to the deployment machines, to achieve optimal performance. 
-In a multi-socket machine, set `UKHARON_CPUNODEBIND` to the socket that is closer to the RDMA NIC and `UKHARON_CPUMEMBIND` to the memory that is closer to this socket.
+In a multi-socket machine, set `UBFT_CPUNODEBIND` to the socket that is closer to the RDMA NIC and `UBFT_CPUMEMBIND` to the memory that is closer to this socket.
 The instructions in `mu-build` explain how to retrieve this information.
 
 
