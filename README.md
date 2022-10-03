@@ -24,6 +24,7 @@ Running all experiments requires:
 * Ubuntu 20.04 (different systems may work, but they have not been tested),
 * all machines to have FQDNs (further instructions on this matter will be given when needed),
 * all machines having the following ports open: 7000-7100, 11211, 18515, 9998
+* A machine with Intel SGX (could be the one with Inifiniband).
 
 ### Dependencies
 
