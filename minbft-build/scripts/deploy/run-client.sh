@@ -10,7 +10,7 @@ VMA=$2 # vma or nothing
 REQUEST_CNT=$3
 REQUEST_LENGTH=$4
 
-cd "$(pwd)"/binaries/$CRYPTO
+cd "$(pwd)"/binaries/$CRYPTO/minbft
 
 export LD_LIBRARY_PATH="$(pwd)/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
