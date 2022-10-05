@@ -113,6 +113,12 @@ def main():
         },
     }
 
+    def sub_latency(comp):
+        return sum(disp_latency(components[sn]) for (sn, sp) in (comp['subcomponents'](8) if 'subcomponents' in comp else []))
+
+    def disp_latency(comp):
+        return max([comp['latency'](8), sub_latency(comp)])
+
     for path in ['fast', 'slow']:
         print(f'Decomposition of the latency of the {path} path:')
         for comp in components.values():
@@ -120,15 +126,19 @@ def main():
                 continue
             # main component
             payload=8
-            latency = comp['latency'](payload) / 1000.
+            latency = disp_latency(comp) / 1000.
             comp_disp = comp['display']
-            print(f'- {comp_disp}: {latency} us')
+            print(f'- {comp_disp}: {latency:.2f} us')
             if 'subcomponents' not in comp: continue
+            other = latency
             for (subcomp_name, subpayload) in comp['subcomponents'](payload):
                 subcomp = components[subcomp_name]
-                sublatency = subcomp['latency'](subpayload) / 1000.
+                sublatency = disp_latency(subcomp) / 1000.
+                other -= sublatency
                 subcomp_disp = subcomp['display']
-                print(f' \_> {subcomp_disp}: {sublatency} us')
+                print(f' \_> {subcomp_disp}: {sublatency:.2f} us')
+            if other >= 0.01:
+                print(f' \_> Other: {other:.2f} us')
 
 if __name__ == "__main__":
     main()
