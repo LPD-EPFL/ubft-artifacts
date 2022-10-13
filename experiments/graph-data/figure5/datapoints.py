@@ -78,6 +78,10 @@ def main(vma):
         print(f'{a} -> {b}: ' + ' - '.join(f's={s}: +' + str(int((smrs[b]['latency'](s) - smrs[a]['latency'](s))/smrs[a]['latency'](s)*100)) + '%' for s in sizes))
 
 if __name__ == "__main__":
+    abspath = os.path.abspath(__file__)
+    dname = os.path.dirname(abspath)
+    os.chdir(dname)
+    
     parser = argparse.ArgumentParser()
 
     group = parser.add_mutually_exclusive_group(required=True)
