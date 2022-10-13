@@ -49,4 +49,8 @@ def main():
         print(sgx_mode_name, sgx_mode_values)
 
 if __name__ == "__main__":
+    abspath = os.path.abspath(__file__)
+    dname = os.path.dirname(abspath)
+    os.chdir(dname)
+    
     main()
