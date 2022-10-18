@@ -8,11 +8,9 @@ source ../../base-scripts/config.sh
 
 send_payload "$SCRIPT_DIR"/payload.zip
 
-#MSG_SZ=(2 4 8 16 32 64 128 256 512 1024 2048 4096 8192)
-MSG_SZ=(64 512 2048)
-TTCB_SZ=(8 16 32 64 128 256 512)
-#WIN_SZ=(64 256 512)
-WIN_SZ=(16 32)
+MSG_SZ=(64 2048)
+TTCB_SZ=(16 32 64 128)
+WIN_SZ=(256)
 
 for msg_sz in ${MSG_SZ[@]}; do
     for ttcb_sz in ${TTCB_SZ[@]}; do
