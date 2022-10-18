@@ -5,7 +5,7 @@ source "$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"/co
 export DORY_REGISTRY_IP=$(machine2hostname $REGISTRY_MACHINE)
 
 # For maximum performance, do not print logging messages
-export SPDLOG_LEVEL=debug
+export SPDLOG_LEVEL=CB=OFF,CE=OFF,UbftServer=OFF,RequestLog=OFF,RpcClientRequestIngress=OFF
 
 UBFT_RT_MODE=""
 #if  uname -a | grep "rtcore+heartbeat+nohzfull" -q ; then
