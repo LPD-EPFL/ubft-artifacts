@@ -18,15 +18,15 @@ for msg_sz in ${MSG_SZ[@]}; do
             reset_processes
             ssh -o LogLevel=QUIET -t $(machine2ssh $REGISTRY_MACHINE) "$ROOT_DIR/ubft_experiment/$(machine2dir $REGISTRY_MACHINE)/memc.sh"
         
-            ssh -o LogLevel=QUIET -t $(machine2ssh machine1) "$ROOT_DIR/ubft_experiment/$(machine2dir machine1)/deployment/invoker.sh binaries/ubft-server ubft-server -l 1 -s 1 -s 2 -s 3 -a flip -c $msg_sz,$((msg_sz+1)) -w 1 -b 1 -t $ttcb_sz -W $win_sz $EXECUTION"
-            ssh -o LogLevel=QUIET -t $(machine2ssh machine2) "$ROOT_DIR/ubft_experiment/$(machine2dir machine2)/deployment/invoker.sh binaries/ubft-server ubft-server -l 2 -s 1 -s 2 -s 3 -a flip -c $msg_sz,$((msg_sz+1)) -w 1 -b 1 -t $ttcb_sz -W $win_sz $EXECUTION"
-            ssh -o LogLevel=QUIET -t $(machine2ssh machine3) "$ROOT_DIR/ubft_experiment/$(machine2dir machine3)/deployment/invoker.sh binaries/ubft-server ubft-server -l 3 -s 1 -s 2 -s 3 -a flip -c $msg_sz,$((msg_sz+1)) -w 1 -b 1 -t $ttcb_sz -W $win_sz $EXECUTION"
+            ssh -o LogLevel=QUIET -t $(machine2ssh machine1) "$ROOT_DIR/ubft_experiment/$(machine2dir machine1)/deployment/invoker.sh binaries/ubft-server ubft-server -l 1 -s 1 -s 2 -s 3 --dump-vm-consumption -a flip -c $msg_sz,$((msg_sz+1)) -w 1 -b 1 -t $ttcb_sz -W $win_sz $EXECUTION"
+            ssh -o LogLevel=QUIET -t $(machine2ssh machine2) "$ROOT_DIR/ubft_experiment/$(machine2dir machine2)/deployment/invoker.sh binaries/ubft-server ubft-server -l 2 -s 1 -s 2 -s 3 --dump-vm-consumption -a flip -c $msg_sz,$((msg_sz+1)) -w 1 -b 1 -t $ttcb_sz -W $win_sz $EXECUTION"
+            ssh -o LogLevel=QUIET -t $(machine2ssh machine3) "$ROOT_DIR/ubft_experiment/$(machine2dir machine3)/deployment/invoker.sh binaries/ubft-server ubft-server -l 3 -s 1 -s 2 -s 3 --dump-vm-consumption -a flip -c $msg_sz,$((msg_sz+1)) -w 1 -b 1 -t $ttcb_sz -W $win_sz $EXECUTION"
             sleep 5
 
             # Warning: ssh -t introduces a carriage return into the string
             M1PID=$(ssh -o LogLevel=QUIET $(machine2ssh machine1) "$ROOT_DIR/ubft_experiment/$(machine2dir machine1)/deployment/invoker-getpid.sh ubft-server")
 
-            ssh -o LogLevel=QUIET -t $(machine2ssh machine4) "$ROOT_DIR/ubft_experiment/$(machine2dir machine4)/deployment/invoker.sh binaries/ubft-client ubft-client -l 64 -s 1 -s 2 -s 3 -a flip -c $msg_sz,$((msg_sz+1)) -w 1 $EXECUTION"
+            ssh -o LogLevel=QUIET -t $(machine2ssh machine4) "$ROOT_DIR/ubft_experiment/$(machine2dir machine4)/deployment/invoker.sh binaries/ubft-client ubft-client -l 64 -s 1 -s 2 -s 3 --dump-percentiles -a flip -c $msg_sz,$((msg_sz+1)) -w 1 $EXECUTION"
         
             if [[ -z $EXECUTION ]]
             then
