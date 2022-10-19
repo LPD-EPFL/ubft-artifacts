@@ -43,7 +43,7 @@ def main():
     for (app_name, app) in apps.items():
         for smr in smrs:
             ps = [latency(smr, app_name, app['params'], p) for p in (50, 90, 95)]
-            print("{} ({}): 90th %-ile = {}, 50th %ile = {}, 99th %-ile = {}".format(app_name.capitalize(), smr, ps[1], ps[0], ps[2]))
+            print("{} ({}): 90th %-ile = {}, 50th %ile = {}, 95th %-ile = {}".format(app_name.capitalize(), smr, ps[1], ps[0], ps[2]))
             
 if __name__ == "__main__":
     abspath = os.path.abspath(__file__)
