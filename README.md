@@ -7,11 +7,11 @@ More precisely, it contains:
 * Instructions on how to launch the experiments and obtain the results.
 
 By running the experiments, you should be able to reproduce the numbers shown in:
-* **Figure 4**: End-to-end latency of different applications when either not replicated or replicated via Mu and uBFT’s fast path.
-* **Figure 5**: Median end-to-end latency for different request sizes of an unreplicated no-op application, as well as its latency when replicated with Mu, uBFT and MinBFT.
-* **Figure 6**: Decomposition of the latency of UBFT's fast and slow paths.
-* **Figure 7**: Median latency of multiple non-equivocation mechanisms for different message sizes.
-* **Figure 8**: uBFT's tail latency for different TCB tails t and different request sizes of 64B and 2KiB.
+* **Figure 7**: End-to-end latency of different applications when either not replicated or replicated via Mu and uBFT’s fast path.
+* **Figure 8**: Median end-to-end latency for different request sizes of an unreplicated no-op application, as well as its latency when replicated with Mu, uBFT and MinBFT.
+* **Figure 9**: Decomposition of the latency of UBFT's fast and slow paths.
+* **Figure 10**: Median latency of multiple non-equivocation mechanisms for different message sizes.
+* **Figure 11**: uBFT's tail latency for different TCB tails t and different request sizes of 64B and 2KiB.
 * **Table 2**: uBFT replica memory usage for different TCB tails t and different request sizes.
 
 # Detailed instructions
