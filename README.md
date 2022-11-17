@@ -1,7 +1,7 @@
 # Overview
 uBFT is a BFT SMR system for microsecond applications.
 
-This repository contains the artifacts and instructions needed to reproduce the experiments in our [ASPLOS paper](https://arxiv.org/abs/2210.17174).
+This repository contains the artifacts and instructions needed to reproduce the experiments in our [ASPLOS paper](https://arxiv.org/abs/2210.17174v2).
 More precisely, it contains:
 * Instructions on how to build the payloads for the different experiments.
 * Instructions on how to launch the experiments and obtain the results.
