@@ -1,4 +1,4 @@
-# Figure 6
+# Figure 9
 Recursive decomposition of the end-to-end latency of uBFT’s fast and slow paths.
 
 ## Payload

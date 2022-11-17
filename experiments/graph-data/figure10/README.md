@@ -1,4 +1,4 @@
-# Figure 7
+# Figure 10
 Median latency of multiple non-equivocation mechanisms for different message sizes.
 
 ## Payload

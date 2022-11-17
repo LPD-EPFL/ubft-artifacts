@@ -1,4 +1,4 @@
-# Figure 8
+# Figure 11
 uBFT's tail latency for different TCB tails t for 2KiB requests and 64B requests.
 
 ## Payload

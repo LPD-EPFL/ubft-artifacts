@@ -1,4 +1,4 @@
-# Figure 4
+# Figure 7
 End-to-end latency of different applications when either not replicated or replicated via Mu and uBFT’s fast path.
 
 ## Payload
